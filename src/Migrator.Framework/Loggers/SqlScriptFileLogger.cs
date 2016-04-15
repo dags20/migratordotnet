@@ -47,6 +47,7 @@ namespace Migrator.Framework.Loggers
         {
             _innerLogger.ApplyingDBChange(sql);
             _streamWriter.WriteLine(sql);
+            _streamWriter.WriteLine("GO");
         }
 
         public void Started(List<long> appliedVersions, long finalVersion)

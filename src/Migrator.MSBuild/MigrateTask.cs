@@ -24,7 +24,7 @@ namespace Migrator.MSBuild
 	/// Runs migrations on a database
 	/// </summary>
 	/// <remarks>
-	/// To script the changes applied to the database via the migrations into a file, set the <see cref="ScriptChanges"/> 
+	/// To script the changes applied to the database via the migrations into a file, set the <see cref="ScriptChanges"/>
 	/// flag and provide a file to write the changes to via the <see cref="ScriptFile"/> setting.
 	/// </remarks>
 	/// <example>
@@ -73,7 +73,7 @@ namespace Migrator.MSBuild
 		}
 
         /// <summary>
-        /// The paths to the assemblies that contain your migrations. 
+        /// The paths to the assemblies that contain your migrations.
         /// This will generally just be a single item.
         /// </summary>
         public ITaskItem[] Migrations
@@ -83,7 +83,7 @@ namespace Migrator.MSBuild
 		}
 
         /// <summary>
-        /// The paths to the directory that contains your migrations. 
+        /// The paths to the directory that contains your migrations.
         /// This will generally just be a single item.
         /// </summary>
         public string Directory
@@ -117,7 +117,7 @@ namespace Migrator.MSBuild
 		}
 
         /// <summary>
-        /// Gets value indicating whether to script the changes made to the database 
+        /// Gets value indicating whether to script the changes made to the database
         /// to the file indicated by <see cref="ScriptFile"/>.
         /// </summary>
         /// <value><c>true</c> if the changes should be scripted to a file; otherwise, <c>false</c>.</value>
@@ -127,7 +127,7 @@ namespace Migrator.MSBuild
 	    }
 
 	    /// <summary>
-        /// Gets or sets the script file that will contain the Sql statements 
+        /// Gets or sets the script file that will contain the Sql statements
         /// that are executed as part of the migrations.
         /// </summary>
 	    public string ScriptFile
@@ -162,7 +162,7 @@ namespace Migrator.MSBuild
             mig.DryRun = DryRun;
             if (ScriptChanges)
             {
-                using (StreamWriter writer = new StreamWriter(ScriptFile))
+                using (StreamWriter writer = new StreamWriter(ScriptFile, true))
                 {
                     mig.Logger = new SqlScriptFileLogger(mig.Logger, writer);
                     RunMigration(mig);
@@ -186,5 +186,3 @@ namespace Migrator.MSBuild
 	    }
 	}
 }
-
-
